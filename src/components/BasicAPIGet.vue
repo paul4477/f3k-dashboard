@@ -12,13 +12,14 @@
 
 <script>
 import axios from "axios";
-const API_URL = "http://f3xvault.com/api/";
+const API_URL = "http://f3xvault.com/api.php";
 
 export default {
   name: "Test",
   data: () => ({
       isLoading: true,
-      msg: ''
+      msg: '',
+      comp: null
   }),
   created() {
     console.log(this)
@@ -35,8 +36,9 @@ export default {
     axios(config)
       .then(response => {
         console.log(this.msg)
-        this.msg = JSON.stringify(response.data)
+        this.comp = response.data
         this.isLoading = false
+        this.msg = this.comp.event.location_name
       })
       .catch(error => {
         console.log(error);
