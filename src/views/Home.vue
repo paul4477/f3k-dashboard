@@ -2,7 +2,7 @@
 <div>
   <div class="row">
     <div class="col-lg">
-      Hello
+      <BasicAPIGet />
     </div>
   </div>
 </div>
@@ -10,10 +10,12 @@
 
 <script>
 // @ is an alias to /src
+import BasicAPIGet from '@/components/BasicAPIGet.vue'
 
 export default {
   name: 'Home',
   components: {
+    BasicAPIGet
   }
 }
 </script>
