@@ -1,6 +1,6 @@
 {
-  "name": "vue-heroku-the-right-way",
-  "short_name": "vue-heroku-the-right-way",
+  "name": "f3k-dashboard",
+  "short_name": "f3k-dashboard",
   "icons": [
     {
       "src": "/img/icons/android-chrome-192x192.png",
