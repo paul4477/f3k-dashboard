@@ -15,13 +15,16 @@ import axios from "axios";
 const API_URL = "http://f3xvault.com/api/";
 
 export default {
-  name: "HelloWorld",
-  props: {
-    msg: '',
-    isLoading: false
-  },
+  name: "Test",
+  data: () => ({
+      isLoading: true,
+      msg: ''
+  }),
   created() {
+    console.log(this)
+    console.log(this.msg)
     this.isLoading = true
+
     var config = {
       method: "post",
       url:
@@ -30,14 +33,15 @@ export default {
     };
 
     axios(config)
-      .then(function (response) {
-        console.log(JSON.stringify(response.data))
+      .then(response => {
+        console.log(this.msg)
         this.msg = JSON.stringify(response.data)
         this.isLoading = false
       })
-      .catch(function (error) {
+      .catch(error => {
         console.log(error);
-      });
-  },
+      })
+      .finally(() => {this.isLoading - false})
+  }
 };
 </script>

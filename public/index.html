@@ -12,13 +12,13 @@
   <!-- <link rel="stylesheet" href="https://bootswatch.com/4/lumen/bootstrap.min.css"> -->
   <link rel="stylesheet" href="https://bootswatch.com/4/lumen/bootstrap.min.css">
   <!-- lumen sandstone -->
-  <script src="http://192.168.64.184/api/timesync/timesync.js"></script>
-  <script src="http://192.168.64.184/js/pressure.js"></script>
+  <script src="/api/timesync/timesync.js"></script>
+  <script src="/js/pressure.js"></script>
   <title><%= htmlWebpackPlugin.options.title %></title>
   <script>
     window.Pressure = Pressure
     window.ts = timesync.create({
-      server: 'http://192.168.64.184/api/timesync',
+      server: '/api/timesync',
       interval: 23000
     })
     function blockMove(event) {

@@ -4,8 +4,23 @@
 const express = require('express');
 const serveStatic = require("serve-static")
 const path = require('path');
-app = express();
+
+const app = express();
+
+const logger = (req, res, next) => {
+    console.log("URL:", req.originalUrl, req.connection.remoteAddress);
+    next();
+  }
+
+app.use(logger);
+app.use(express.json());
+
 app.use(serveStatic(path.join(__dirname, 'dist')));
+
+// API and utilities
+var apiRouter = require('./routes/api');
+app.use('/api', apiRouter);
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
