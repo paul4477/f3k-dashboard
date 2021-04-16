@@ -2,7 +2,7 @@
 <div>
     <div v-if="!isLoading" class="card">
             <div v-for="event in events" :key="event.event_id" class="card text-white bg-primary mb-3 text-center" style="">
-                <a href="javascript:goToScoring(88)" class="stretched-link">
+                <a :href="'/event/' + event.event_id" class="stretched-link">
                     <div class="card-body">
                         <h1 class="text-white font-weight-bold">{{event.event_name}}</h1>
                     </div>

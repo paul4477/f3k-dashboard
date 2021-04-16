@@ -2,7 +2,7 @@
   <div id="appmain">
     <div class="row">
       <div class="col-lg">
-        <EventChooser />
+        <EventHeader />
       </div>
     </div>
   </div>
@@ -10,12 +10,12 @@
 
 <script>
 // @ is an alias to /src
-import EventChooser from "@/components/EventChooser.vue";
+import EventHeader from "@/components/EventHeader.vue";
 
 export default {
-  name: "Home",
+  name: "ShowEvent",
   components: {
-    EventChooser
+    EventHeader
   }
 };
 </script>

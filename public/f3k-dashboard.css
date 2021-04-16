@@ -3,7 +3,7 @@
     pointer-events: none;
   }
   
-  #nprogress .bar {
+#nprogress .bar {
     background: rgba(34, 153, 221, 0.596);
   
     width: 100%;

@@ -2,34 +2,30 @@ import axios from 'axios'
 
 NProgress.configure({showSpinner: false})
 NProgress.configure({parent: '#appmain'})
-
+NProgress.configure({trickleSpeed: 200, trickleRate: 0.1,  trickle: true, easing: 'ease', speed: 50});
 
 const APIPASS = process.env.VUE_APP_APIPASS || process.env.APIPASS || 'set.ENV.VUE_APP_APIPASS';
 const APIUSER = process.env.VUE_APP_APIUSER || process.env.APIUSER || 'set.ENV.VUE_APP_APIUSER';
 
-console.log(process.env)
 // create a new axios instance
 const instance = axios.create({
-  baseURL: 'https://www.f3xvault.com',
+  baseURL: 'https://www.f3xvault.com/api.php',
   params: {
     login: APIUSER,
     password: APIPASS,
     output_format: 'json'
-    //&function=searchEvents&output_format=json&country=GB&event_type_code=f3k
   }
 })
 
-// before a request is made start the nprogress
+// before a request is made start the nprogress bar
 instance.interceptors.request.use(config => {
   NProgress.start()
-  console.log('start progress')
   return config
 })
 
-// before a response is returned stop nprogress
+// before a response is returned stop nprogress bar
 instance.interceptors.response.use(response => {
   NProgress.done()
-  console.log('stop progress')
   return response
 })
 
