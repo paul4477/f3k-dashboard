@@ -3,9 +3,20 @@ import axios from 'axios'
 NProgress.configure({showSpinner: false})
 NProgress.configure({parent: '#appmain'})
 
+
+const APIPASS = process.env.APIPASS || 'set.ENV.APIPASS';
+const APIUSER = process.env.APIUSER || 'set.ENV.APIUSER';
+
+console.log(process.env)
 // create a new axios instance
 const instance = axios.create({
-  baseURL: 'https://www.f3xvault.com'
+  baseURL: 'https://www.f3xvault.com',
+  params: {
+    login: APIUSER,
+    password: APIPASS,
+    output_format: 'json'
+    //&function=searchEvents&output_format=json&country=GB&event_type_code=f3k
+  }
 })
 
 // before a request is made start the nprogress

@@ -34,20 +34,18 @@ export default {
     //sleep(2)
     var config = {
     method: 'post',
-    url: 'api.php?login=paul.d.robinson@gmail.com&password=hobra8-dycpic-nyZgoj&function=searchEvents&output_format=json&country=GB&event_type_code=f3k',
+    url: 'api.php',
+    params: {
+        function: 'searchEvents',
+        country: 'GB',
+        event_type_code: 'f3k'
+    },
     headers: { }
-    };
-
-    var config2 = {
-      method: "post",
-      url:
-        "?login=paul.d.robinson@gmail.com&password=hobra8-dycpic-nyZgoj&function=getEventInfoFull&output_format=json&event_id=2051",
-      headers: {},
-    };
+    }
 
     axios(config)
       .then(response => {
-        console.log(this.msg)
+        console.log(response.data.error_string)
         this.events = response.data.events
         this.isLoading = false
         
