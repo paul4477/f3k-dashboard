@@ -14,7 +14,15 @@
   <!-- lumen sandstone -->
   <script src="/api/timesync/timesync.js"></script>
   <script src="/js/pressure.js"></script>
-  <title><%= htmlWebpackPlugin.options.title %></title>
+
+    <script src="https://unpkg.com/nprogress@0.2.0/nprogress.js"></script>
+
+  <link rel="stylesheet" href="f3k-dashboard.css">
+
+
+  <title>
+    <%= htmlWebpackPlugin.options.title %>
+  </title>
   <script>
     window.Pressure = Pressure
     window.ts = timesync.create({
@@ -24,7 +32,7 @@
     function blockMove(event) {
       // Tell Safari not to move the window.
       event.preventDefault();
-      }    
+    }
     function disableScroll() {
       console.log('Disable Scroll')
       document.body.addEventListener('touchmove', blockMove, { passive: false })
@@ -39,7 +47,7 @@
 <body>
   <noscript>
     <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled.
-      Please enable it to continue.</strong>
+        Please enable it to continue.</strong>
   </noscript>
 
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
@@ -51,8 +59,9 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
     integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
     crossorigin="anonymous"></script>
-
+  
   <div id="app"></div>
+  <div id="progress"></div>
   <!-- built files will be auto injected -->
 </body>
 
