@@ -1,7 +1,6 @@
 <template>
   <div>
     <div v-if="!isLoading" class="card">
-      <div class="card-header">Active Competition ({{ eventData.event_id }})</div>
       <div class="card-body">
         <div class="row">
           <div class="col-8 px-1">
@@ -27,12 +26,10 @@ import { mapState } from "vuex";
 
 export default {
   name: "EventChooser",
-  data: () => ({
-    events: {},
-  }),
+
   computed: {
     eventData() {
-      return this.$store.state.currentComp.eventData;
+      return this.$store.state.currentComp.eventDataRaw;
     },
     isLoading() {
       return this.$store.state.currentComp.isLoading;

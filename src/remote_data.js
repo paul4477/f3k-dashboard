@@ -1,8 +1,8 @@
 import axios from 'axios'
 
-NProgress.configure({showSpinner: false})
-NProgress.configure({parent: '#appmain'})
-NProgress.configure({trickleSpeed: 200, trickleRate: 0.1,  trickle: true, easing: 'ease', speed: 50});
+NProgress.configure({showSpinner: true})
+//NProgress.configure({parent: '#appmain'})
+//NProgress.configure({trickleSpeed: 200, trickleRate: 0.1,  trickle: true, easing: 'ease', speed: 50});
 
 const APIPASS = process.env.VUE_APP_APIPASS || process.env.APIPASS || 'set.ENV.VUE_APP_APIPASS';
 const APIUSER = process.env.VUE_APP_APIUSER || process.env.APIUSER || 'set.ENV.VUE_APP_APIUSER';
