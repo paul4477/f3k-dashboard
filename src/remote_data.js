@@ -4,8 +4,8 @@ NProgress.configure({showSpinner: false})
 NProgress.configure({parent: '#appmain'})
 
 
-const APIPASS = process.env.VUE_APP_APIPASS || 'set.ENV.VUE_APP_APIPASS';
-const APIUSER = process.env.VUE_APP_APIUSER || 'set.ENV.VUE_APP_APIUSER';
+const APIPASS = process.env.VUE_APP_APIPASS || process.env.APIPASS || 'set.ENV.VUE_APP_APIPASS';
+const APIUSER = process.env.VUE_APP_APIUSER || process.env.APIUSER || 'set.ENV.VUE_APP_APIUSER';
 
 console.log(process.env)
 // create a new axios instance
