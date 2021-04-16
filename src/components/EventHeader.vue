@@ -1,60 +1,51 @@
 <template>
-<div>
+  <div>
     <div v-if="!isLoading" class="card">
-            <div v-for="event in events" :key="event.event_id" class="card text-white bg-primary mb-3 text-center" style="">
-                <a :href="'/event/' + event.event_id" class="stretched-link">
-                    <div class="card-body">
-                        <h1 class="text-white font-weight-bold">{{event.event_name}}</h1>
-                    </div>
-                </a>
-            </div>
+      <div class="card-header">Active Competition ({{ eventData.event_id }})</div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-8 px-1">
+            <h4 class="card-title">{{ eventData.event_name }}</h4>
+            <p class="card-text">
+              <strong>Venue:</strong> {{ eventData.location_name }}
+            </p>
+            <p class="card-text">
+              <strong>Date:</strong>
+              {{ new Date(eventData.start_date).toDateString() }}
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
-    
-</div>
+  </div>
 </template>
 
 <script>
 //import axios from "axios";
-import axios from "@/remote_data.js"
+//import axios from "@/remote_data.js";
+import { mapState } from "vuex";
 
 export default {
-  name: "Test",
+  name: "EventChooser",
   data: () => ({
-      isLoading: true,
-      msg: '',
-      comp: null,
-      events: {}
+    events: {},
   }),
-  created() {
-    console.log(this)
-    console.log(this.msg)
-    this.isLoading = true
-    
-
-    //sleep(2)
-    var config = {
-    method: 'post',
-    url: 'api.php',
-    params: {
-        function: 'searchEvents',
-        country: 'GB',
-        event_type_code: 'f3k'
+  computed: {
+    eventData() {
+      return this.$store.state.currentComp.eventData;
     },
-    headers: { }
-    }
+    isLoading() {
+      return this.$store.state.currentComp.isLoading;
+    },
+    populated() {
+      return this.$store.state.currentComp.populated;
+    },
+  },
 
-    axios(config)
-      .then(response => {
-        console.log(response.data.error_string)
-        this.events = response.data.events
-        this.isLoading = false
-        
-        this.msg = this.events[0].location_name
-      })
-      .catch(error => {
-        console.log(error);
-      })
-      .finally(() => {this.isLoading - false})
-  }
-}
+  created() {
+    if (!this.populated || this.eventData.event_id != this.$route.params.id) {
+      this.$store.dispatch("currentComp/populate_data", this.$route.params.id);
+    }
+  },
+};
 </script>

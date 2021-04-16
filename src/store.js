@@ -20,7 +20,6 @@ const events = {
     },
     actions: {
         populate_events(context) {
-            console.log('populate_events')
             context.commit('SET_ISLOADING')
 
             var config = {
@@ -48,7 +47,47 @@ const events = {
 }
 
 const currentComp = {
+    namespaced: true,
+    state: {
+        eventData: {},
+        populated: false,
+        isLoading: false
+    },
+    mutations: {
+        SET_POPULATED(state) { state.populated = true },
+        SET_UNPOPULATED(state) { state.populated = false },
+        SET_ISLOADING(state) { state.isLoading = true },
+        SET_LOADED(state) { state.isLoading = false },
+        SET_EVENTDATA(state, payload) { state.eventData = payload },
+    },
+    actions: {
+        populate_data(context, event_id) {
+            context.commit('SET_ISLOADING')
+            
+            console.log('here')
+            console.log(event_id)
 
+            var config = {
+                method: "post",
+                params: {
+                    function: "getEventInfo",
+                    event_id: event_id
+                }
+            };
+
+            axios(config)
+                .then((response) => {
+                    context.commit('SET_EVENTDATA', response.data.event)
+                    context.commit('SET_POPULATED')
+                })
+                .catch((error) => {
+                    console.log(error)
+                })
+                .finally(() => {
+                    context.commit('SET_LOADED')
+                });
+        }
+    }
 }
 
 
