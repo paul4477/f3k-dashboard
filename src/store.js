@@ -74,10 +74,8 @@ const currentComp = {
         },
         SET_ROUNDS(state) {
             var rounds = []
-            //for (const [pilot_id, pilot] of Object.entries(state.pilotsByID)) { 
-            //    console.log(pilot_id)
-            //}
-            console.log('SET_ROUNDS', state.eventDataRaw.tasks )
+
+            //console.log('SET_ROUNDS', state.eventDataRaw.tasks )
             state.eventDataRaw.tasks.forEach((task, index) => {
                 rounds.push(task)
             })
@@ -90,7 +88,7 @@ const currentComp = {
 
                 state.rounds.forEach((task, index) => {
 
-                    console.log(parseInt(task.round_number), pilot.rounds[parseInt(task.round_number) - 1].flights[0].flight_group)
+                    //console.log(parseInt(task.round_number), pilot.rounds[parseInt(task.round_number) - 1].flights[0].flight_group)
 
                     draw[pilot.pilot_id][task.round_number] = pilot.rounds[parseInt(task.round_number) - 1].flights[0].flight_group
 
@@ -133,12 +131,87 @@ const currentComp = {
     }
 }
 
+const timer = {
+    namespaced: true,
+    state: {
+      round: '00',
+      group: '00',
+      // running: true,
+      slotState: '',
+      canFly: false,
+      finishTime: Date(),
+      shortTaskDescription: '',
+      taskDescription: ''
+  
+    },
+    getters: {
+      compId (state, getters, rootState) {
+        // console.log('root', rootState, rootState.comp.id)
+        return rootState.currentComp.eventDataRaw.event_id
+      }
+    },
+    actions: {
+      updateRoundInfo (context) {
+        // console.log('updateRoundInfo', context)
+        // fetch(API_URL + `/comp/${this.compId}/round/${this.round}`)
+        if (context.getters.compId) {
+          axios.get(API_URL + `/comp/${context.getters.compId}/round/${context.state.round}`)
+            .then(response => {
+              context.commit('SET_TASK_DESC', response.data.F3KTaskDescription)
+              context.commit('SET_SHORT_TASK_DESC', response.data.F3KTaskAbbreviation)
+            })
+            // .catch(e => {})
+            .finally(() => { })
+        }
+      }
+    },
+    mutations: {
+      SET_TASK_DESC (state, payload) {
+        // console.log('SET_TASK_DESC', payload)
+        state.TaskDescription = payload
+      },
+      SET_ROUND (state, payload) {
+        console.log('SET_ROUND', payload)
+        state.round = payload
+      },
+  
+      SET_SHORT_TASK_DESC (state, payload) {
+        // console.log('SET_SHORT_TASK_DESC', payload)
+        state.shortTaskDescription = payload
+      },
+      UPDATE (state, payload) {
+        console.log('slot/UPDATE', state.round, payload.round)
+        if ((state.round !== payload.round)) {
+          state.round = payload.round
+          if (payload.round !== '00') {
+            store.dispatch('slot/updateRoundInfo')
+          }
+        }
+        state.group = payload.group
+        // console.log(payload.endTime)
+        state.finishTime = new Date(payload.endTime)
+        state.slotState = payload.type
+        state.canFly = payload.canFly
+      }
+    }
+  }
+
+
 const store = new Vuex.Store({
     modules: {
         events: events,
         currentComp: currentComp,
+        timer: timer,
         
     }
 })
+
+const API_URL = '/api/events'
+const eventSource = new EventSource(API_URL)
+
+eventSource.onmessage = (event) => {
+  const parsedData = JSON.parse(event.data)
+  store.commit('timer/UPDATE', parsedData)
+}
 
 export default store

@@ -1,5 +1,5 @@
 <template>
-  <form>
+  <form v-if="!isLoading">
     <div class="form-inline my-3">
     <select class="form-control form-control-lg" id="pilot" v-model="$store.state.currentComp.currentPilot" >
       <option value="0" >Select a pilot...</option>

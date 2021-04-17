@@ -11,8 +11,8 @@
               <ul class="navbar-nav">
         <!--<router-link class="nav-link" class-active="nav-link active" to="/">Home</router-link>-->
         <!--<li class="nav-item"><router-link data-toggle="collapse" data-target="#collapsibleNavbar" class="nav-link" class-active="nav-link active" to="/timer">Timer</router-link></li>
-        <li class="nav-item"><router-link data-toggle="collapse" data-target="#collapsibleNavbar" class="nav-link" class-active="nav-link active" to="/slot">Slot Info</router-link></li>
-        <li class="nav-item"><router-link data-toggle="collapse" data-target="#collapsibleNavbar" class="nav-link" class-active="nav-link active" to="/results">Results</router-link></li>-->
+        <li class="nav-item"><router-link data-toggle="collapse" data-target="#collapsibleNavbar" class="nav-link" class-active="nav-link active" to="/slot">Slot Info</router-link></li>-->
+        <li class="nav-item"><router-link data-toggle="collapse" data-target="#collapsibleNavbar" class="nav-link" class-active="nav-link active" to="/roundstatus">Current Round</router-link></li>
         <li class="nav-item"><router-link data-toggle="collapse" data-target="#collapsibleNavbar" class="nav-link" class-active="nav-link active" to="/about">About</router-link></li>
         </ul>
         </div>
