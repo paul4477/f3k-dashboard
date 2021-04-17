@@ -118,7 +118,7 @@ api.use('/timesync', timesyncServer.requestHandler);
 
 // /api/slotInfo
 // Output running slot information
-const runningSlot = require('@/runningSlot');
+
 api.get('/slotInfo', (req, res) => {
     res.send(runningSlot);
 });
