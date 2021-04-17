@@ -1,5 +1,6 @@
 <template>
-  <form v-if="!isLoading">
+<transition v-if="!isLoading" name="fade">
+  <form >
     <div class="form-inline my-3">
     <select class="form-control form-control-lg" id="pilot" v-model="$store.state.currentComp.currentPilot" >
       <option value="0" >Select a pilot...</option>
@@ -8,6 +9,7 @@
     </div>
     <!-- <button v-on:click="setCompID" class="btn btn-primary">Set Competition</button> -->
     </form>
+    <transition>
 </template>
 
 <script>

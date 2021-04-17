@@ -1,4 +1,5 @@
 <template>
+<transition name="fade">
   <div v-if="!isLoading && currentPilot && currentPilot != 0" class="card">
     
     <table class="table table-striped">
@@ -19,6 +20,7 @@
       </tbody>
     </table>
   </div>
+  <transition>
 </template>
 
 <script>

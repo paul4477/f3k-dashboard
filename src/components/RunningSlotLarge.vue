@@ -30,7 +30,7 @@
         class="col flex-fill h1"
         v-bind:class="{ 'text-primary': canFly, 'text-light': !canFly }"
       >
-        <strong>{{ shortTaskDescription }}</strong>
+        <strong>{{  rounds[parseInt(round)].flight_type_name_short }}</strong>
       </div>
     </div>
 
