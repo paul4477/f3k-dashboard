@@ -206,7 +206,7 @@ const store = new Vuex.Store({
     }
 })
 
-const API_URL = 'http://127.0.0.1:5000/api/events'
+var API_URL = 'http://127.0.0.1:5000/api/events'
 if (process.env.NODE_ENV == 'production') {API_URL = '/api/events'}
 
 const eventSource = new EventSource(API_URL)
