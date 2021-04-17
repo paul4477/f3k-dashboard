@@ -127,8 +127,15 @@ export default {
   },
   mounted() {
     setInterval(() => {
-      const timeLeft =
-        (this.$store.state.timer.finishTime - this.ts.now()) / 1000;
+      //console.log(process.env.NODE_ENV, this.$store.state.timer.finishTime)
+      var timeLeft = 0
+      if (process.env.NODE_ENV == 'production') {
+        timeLeft = (this.$store.state.timer.finishTime - this.ts.now()) / 1000;
+      }
+      else {
+        timeLeft = (this.$store.state.timer.finishTime) / 1000;
+      }
+
       if (timeLeft <= 0) {
         this.timeRemaining = 0;
       } else {

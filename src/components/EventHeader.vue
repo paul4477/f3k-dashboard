@@ -40,7 +40,8 @@ export default {
   },
 
   created() {
-    if (!this.populated || (this.$route.params.id && this.eventDataRaw.event_id != this.$route.params.id)) {
+    console.log(this.populated, this.$route.params.id, this.eventData.event_id)
+    if (!this.populated || (this.$route.params.id && this.eventData.event_id != this.$route.params.id)) {
       this.$store.dispatch("currentComp/populate_data", this.$route.params.id);
     }
   },

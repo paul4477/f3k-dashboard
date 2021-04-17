@@ -180,7 +180,7 @@ const timer = {
         state.shortTaskDescription = payload
       },
       UPDATE (state, payload) {
-        console.log('slot/UPDATE', state.round, payload.round)
+        //console.log('slot/UPDATE', state.round, payload.round)
         if ((state.round !== payload.round)) {
           state.round = payload.round
           if (payload.round !== '00') {
@@ -206,7 +206,9 @@ const store = new Vuex.Store({
     }
 })
 
-const API_URL = '/api/events'
+const API_URL = 'http://127.0.0.1:5000/api/events'
+if (process.env.NODE_ENV == 'production') {API_URL = '/api/events'}
+
 const eventSource = new EventSource(API_URL)
 
 eventSource.onmessage = (event) => {
