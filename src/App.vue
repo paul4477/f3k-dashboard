@@ -4,9 +4,12 @@
         <router-link class="navbar-brand" class-active="nav-link active" to="/">
         <img src="./assets/glider15.svg" height="25" alt="">
         </router-link>
-          <button class="btn-lg btn-primary" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-            Toggle Menu
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
           </button>
+          <!--<button class="btn-lg btn-primary" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            Toggle Menu
+          </button>-->
           </nav>
         <div class="navbar navbar-dark bg-dark collapse navbar-collapse" id="collapsibleNavbar">
                         
