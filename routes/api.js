@@ -79,7 +79,7 @@ var runningSlot = {
 
             minutes = parseInt(mmssString.slice(0, 2)) * 60;
             seconds = parseInt(mmssString.slice(2, 4));
-            console.log(mmssString, minutes, seconds);
+            //console.log(mmssString, minutes, seconds);
             // Convert to miliseconds
             endTime = Date.now() + 1000 + ((minutes + seconds) * 1000);
             //endTime += 1000; // Correct off by one error
@@ -89,7 +89,7 @@ var runningSlot = {
             if (minutes + seconds == 0) { endTimes = [] };
             // Pop (fifo) time from endTimes
             if (endTimes.length > this.maxTimes) { endTimes.shift() };
-            console.log(this.endTime);
+            //console.log(this.endTime);
         }
     },
     update: function (buffer) {
@@ -138,7 +138,8 @@ eventsRouter.get('/', async (req, res) => {
     const headers = {
         'Content-Type': 'text/event-stream',
         'Connection': 'keep-alive',
-        'Cache-Control': 'no-cache'
+        'Cache-Control': 'no-cache',
+        'Access-Control-Allow-Origin': '*'
     };
     res.writeHead(200, headers);
 
