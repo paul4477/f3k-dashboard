@@ -9,7 +9,7 @@
     </div>
     <!-- <button v-on:click="setCompID" class="btn btn-primary">Set Competition</button> -->
     </form>
-    <transition>
+    </transition>
 </template>
 
 <script>

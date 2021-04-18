@@ -20,7 +20,7 @@
       </tbody>
     </table>
   </div>
-  <transition>
+  </transition>
 </template>
 
 <script>
