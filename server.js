@@ -16,7 +16,6 @@ app.use(logger);
 app.use(express.json());
 
 const cors = reauire('cors')
-app.use(cors)
 
 app.use(serveStatic(path.join(__dirname, 'dist')));
 
