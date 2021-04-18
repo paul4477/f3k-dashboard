@@ -14,7 +14,11 @@ const routes = [
     name: "Round Status",
     component: () => import("./views/RoundStatus.vue")
   },
-
+  {
+    path: "/scoring",
+    name: "Scoring",
+    component: () => import("./views/Scoring.vue")
+  },
   {
     path: "/about",
     name: "About",
