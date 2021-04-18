@@ -36,7 +36,7 @@ export default {
     },
     populated() {
       return this.$store.state.currentComp.populated;
-    },
+    }
   },
 
   created() {
@@ -46,9 +46,8 @@ export default {
       (this.$route.params.id &&
         this.eventData.event_id != this.$route.params.id)
     ) {
-
       this.$store.dispatch("currentComp/populate_data", this.$route.params.id);
     }
-  },
+  }
 };
 </script>
