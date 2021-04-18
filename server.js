@@ -1,26 +1,27 @@
 /**
  * Created by cristian.jora on 04.11.2016.
  */
-const express = require('express');
-const serveStatic = require("serve-static")
-const path = require('path');
+const express = require("express");
+var cors = require('cors');
+const serveStatic = require("serve-static");
+const path = require("path");
 
 const app = express();
 
 const logger = (req, res, next) => {
-    console.log("URL:", req.originalUrl, req.connection.remoteAddress);
-    next();
-  }
+  console.log("URL:", req.originalUrl, req.connection.remoteAddress);
+  next();
+};
 
 app.use(logger);
+app.use(cors);
 app.use(express.json());
 
-app.use(serveStatic(path.join(__dirname, 'dist')));
+app.use(serveStatic(path.join(__dirname, "dist")));
 
 // API and utilities
-var apiRouter = require('./routes/api');
-app.use('/api', apiRouter);
+var apiRouter = require("./routes/api");
+app.use("/api", apiRouter);
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
-
+app.listen(PORT, () => console.log(`Listening on ${PORT}`));

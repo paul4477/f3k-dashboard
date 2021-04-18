@@ -165,7 +165,7 @@ eventsRouter.get('/', async (req, res) => {
 });
 
 function sendSlotToAll() {
-    console.log("Sending to", clients.length, "clients.")
+    // console.log("Sending to", clients.length, "clients.")
     clients.forEach(c => c.res.write(`data: ${JSON.stringify(runningSlot)}\n\n`))
 }
 

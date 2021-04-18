@@ -4,7 +4,7 @@
     v-bind:class="{
       'bg-danger': !canFly,
       'bg-light': canFly,
-      'text-dark': !canFly,
+      'text-dark': !canFly
     }"
   >
     <div class="row">
@@ -30,7 +30,7 @@
         class="col flex-fill h1"
         v-bind:class="{ 'text-primary': canFly, 'text-light': !canFly }"
       >
-        <strong>{{  rounds[parseInt(round)].flight_type_name_short }}</strong>
+        <strong>{{ rounds[parseInt(round)].flight_type_name_short }}</strong>
       </div>
     </div>
 
@@ -122,18 +122,17 @@ export default {
       "group",
       "canFly",
       "slotState",
-      "shortTaskDescription",
-    ]),
+      "shortTaskDescription"
+    ])
   },
   mounted() {
     setInterval(() => {
       //console.log(process.env.NODE_ENV, this.$store.state.timer.finishTime)
-      var timeLeft = 0
-      if (process.env.NODE_ENV == 'production') {
+      var timeLeft = 0;
+      if (process.env.NODE_ENV == "production") {
         timeLeft = (this.$store.state.timer.finishTime - this.ts.now()) / 1000;
-      }
-      else {
-        timeLeft = (this.$store.state.timer.finishTime) / 1000;
+      } else {
+        timeLeft = this.$store.state.timer.finishTime / 1000;
       }
 
       if (timeLeft <= 0) {
@@ -142,12 +141,12 @@ export default {
         this.timeRemaining = timeLeft;
       }
     }, 40);
-  },
+  }
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style >
+<style>
 .bd-highlight {
   background-color: lightgrey;
   border: 1px solid grey;

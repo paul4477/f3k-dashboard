@@ -25,7 +25,7 @@ import { mapState } from "vuex";
 export default {
   name: "EventChooser",
   data: () => ({
-    events: {},
+    events: {}
   }),
   computed: {
     list() {
@@ -36,7 +36,7 @@ export default {
     },
     populated() {
       return this.$store.state.events.populated;
-    },
+    }
   },
 
   created() {
@@ -66,6 +66,6 @@ export default {
       .finally(() => {
         this.isLoading = false
       }); */
-  },
+  }
 };
 </script>

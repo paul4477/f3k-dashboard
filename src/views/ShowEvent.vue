@@ -15,7 +15,6 @@
         <PilotGroupList />
       </div>
     </div>
-
   </div>
 </template>
 
