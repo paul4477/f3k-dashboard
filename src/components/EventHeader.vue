@@ -40,7 +40,7 @@ export default {
   },
 
   created() {
-    console.log(this.populated, this.$route.params.id, this.eventData.event_id);
+    console.log('Created eventheader', this.populated, this.$route.params.id, this.eventData.event_id);
     if (
       !this.populated ||
       (this.$route.params.id &&

@@ -7,7 +7,8 @@
           <button class="btn-lg btn-primary" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
             Toggle Menu
           </button>
-        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+          </nav>
+        <div class="navbar navbar-dark bg-dark collapse navbar-collapse" id="collapsibleNavbar">
                         
                         <router-link data-toggle="collapse" data-target="#collapsibleNavbar" tag="button" class="btn btn-primary" class-active="btn btn-outline-primary" to="/event">Groups</router-link>
                         <router-link data-toggle="collapse" data-target="#collapsibleNavbar" tag="button" class="btn btn-primary" class-active="btn btn-outline-primary" to="/roundstatus">Live</router-link>
@@ -19,7 +20,7 @@
         </ul>-->
         </div>
 
-      </nav>
+      
       <router-view />
   </div>
 </template>
