@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="!isLoading" class="card">
+    <div v-if="!isLoading && populated" class="card">
       <div class="card-body">
         <div class="row">
           <div class="col-8 px-1">
@@ -25,7 +25,7 @@
 import { mapState } from "vuex";
 
 export default {
-  name: "EventChooser",
+  name: "EventHeader",
 
   computed: {
     eventData() {
@@ -38,16 +38,5 @@ export default {
       return this.$store.state.currentComp.populated;
     }
   },
-
-  created() {
-    console.log('Created eventheader', this.populated, this.$route.params.id, this.eventData.event_id);
-    if (
-      !this.populated ||
-      (this.$route.params.id &&
-        this.eventData.event_id != this.$route.params.id)
-    ) {
-      this.$store.dispatch("currentComp/populate_data", this.$route.params.id);
-    }
-  }
 };
 </script>

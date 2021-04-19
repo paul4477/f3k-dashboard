@@ -1,5 +1,5 @@
 <template>
-<div v-if="!compId" class="alert alert-danger" role="alert">
+<div v-if="!isLoading && !populated" class="alert alert-danger" role="alert">
   No competition is selected <a href="#/" class="alert-link">return home</a> to set.
 </div>
 </template>
@@ -11,11 +11,17 @@ import Vue from 'vue'
 export default {
   name: 'NoCompAlert',
   computed: {
-    ...mapState('comp', { compId: 'id' })
+    isLoading() {
+      return this.$store.state.currentComp.isLoading;
+    },
+    populated() {
+      return this.$store.state.currentComp.populated;
+    }
   },
   created () {
-    if (Vue.$cookies.isKey('SelectedComp')) {
-      this.$store.state.comp.id = Vue.$cookies.get('SelectedComp')
+   console.log('Created NoCompAlert', this.populated, this.isLoading,this.$store.state.currentComp ); 
+   if (Vue.$cookies.isKey('currentEvent')) {
+      this.$store.state.comp.id = Vue.$cookies.get('currentEvent')
     }
   }
 }

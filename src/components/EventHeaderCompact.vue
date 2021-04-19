@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="!isLoading" class="card">
+    <div v-if="!isLoading && populated" class="card">
       <div class="card-body">
         <div class="row">
           
@@ -19,12 +19,8 @@
 </template>
 
 <script>
-//import axios from "axios";
-//import axios from "@/remote_data.js";
-import { mapState } from "vuex";
-
 export default {
-  name: "EventChooser",
+  name: "EventHeaderCompact",
 
   computed: {
     eventData() {
@@ -36,12 +32,6 @@ export default {
     populated() {
       return this.$store.state.currentComp.populated;
     },
-  },
-
-  created() {
-    if (!this.populated || (this.$route.params.id && this.eventDataRaw.event_id != this.$route.params.id)) {
-      this.$store.dispatch("currentComp/populate_data", this.$route.params.id);
-    }
   },
 };
 </script>

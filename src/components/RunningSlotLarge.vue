@@ -1,5 +1,5 @@
 <template>
-  <div
+  <div v-if="!isLoading && populated"
     class="text-primary text-center"
     v-bind:class="{
       'bg-danger': !canFly,
@@ -115,7 +115,7 @@ export default {
       return this.$store.state.currentComp.isLoading;
     },
     populated() {
-      return this.$store.state.currentComp.rounds != [];
+      return this.$store.state.currentComp.populated;
     },
     currentPilot() {
       return this.$store.state.currentComp.currentPilot;
@@ -126,23 +126,22 @@ export default {
     pilotsByID() {
       return this.$store.state.currentComp.pilotsByID;
     },
-    ...mapState("timer", [
+    ...mapState("slot", [
       "round",
       "group",
       "canFly",
-      "slotState",
-      "shortTaskDescription",
+      "slotState"
     ]),
   },
   mounted() {
     setInterval(() => {
-      //console.log(process.env.NODE_ENV, this.$store.state.timer.finishTime)
+      //console.log(process.env.NODE_ENV, this.$store.state.slot.finishTime)
       var timeLeft = 0
       if (process.env.NODE_ENV == 'production') {
-        timeLeft = (this.$store.state.timer.finishTime - this.ts.now()) / 1000;
+        timeLeft = (this.$store.state.slot.finishTime - this.ts.now()) / 1000;
       }
       else {
-        timeLeft = (this.$store.state.timer.finishTime) / 1000;
+        timeLeft = (this.$store.state.slot.finishTime) / 1000;
       }
 
       if (timeLeft <= 0) {

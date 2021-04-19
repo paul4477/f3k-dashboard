@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="!isLoading" class="card">
+    <div v-if="!isLoading && populated" class="card">
       <div
         v-for="event in list"
         :key="event.event_id"

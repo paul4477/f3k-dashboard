@@ -85,13 +85,8 @@ const currentComp = {
             var draw = {}
             state.eventDataRaw.prelim_standings.standings.forEach((pilot, index) => {
                 draw[pilot.pilot_id] = {}
-
                 state.rounds.forEach((task, index) => {
-
-                    //console.log(parseInt(task.round_number), pilot.rounds[parseInt(task.round_number) - 1].flights[0].flight_group)
-
                     draw[pilot.pilot_id][task.round_number] = pilot.rounds[parseInt(task.round_number) - 1].flights[0].flight_group
-
                 })
             })
             state.drawByPilot = draw
@@ -101,8 +96,7 @@ const currentComp = {
         populate_data(context, event_id) {
             context.commit('SET_ISLOADING')
 
-            console.log('here')
-            console.log(event_id)
+            console.log('Loading data for event:', event_id)
 
             var config = {
                 method: "post",
@@ -115,23 +109,22 @@ const currentComp = {
             axios(config)
                 .then((response) => {
                     context.commit('SET_EVENTDATA', response.data.event)
-                    context.commit('SET_POPULATED')
                 })
                 .catch((error) => {
                     console.log(error)
                 })
                 .finally(() => {
-
                     context.commit('SET_PILOTS')
                     context.commit('SET_ROUNDS')
                     context.commit('SET_DRAW')
                     context.commit('SET_LOADED')
+                    context.commit('SET_POPULATED')
                 });
         }
     }
 }
 
-const timer = {
+const slot = {
     namespaced: true,
     state: {
       round: '00',
@@ -170,7 +163,7 @@ const store = new Vuex.Store({
     modules: {
         events: events,
         currentComp: currentComp,
-        timer: timer,
+        slot: slot,
         
     }
 })
@@ -182,7 +175,7 @@ const eventSource = new EventSource(API_URL)
 
 eventSource.onmessage = (event) => {
   const parsedData = JSON.parse(event.data)
-  store.commit('timer/UPDATE', parsedData)
+  store.commit('slot/UPDATE', parsedData)
 }
 
 export default store

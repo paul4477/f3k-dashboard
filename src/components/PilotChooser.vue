@@ -1,5 +1,5 @@
 <template>
-  <transition v-if="!isLoading" name="fade">
+  <transition v-if="!isLoading && populated" name="fade">
     <form>
       <div class="form-inline my-3">
         <select

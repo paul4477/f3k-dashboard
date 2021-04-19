@@ -1,6 +1,6 @@
 <template>
   <transition name="fade">
-    <div v-if="!isLoading && currentPilot && currentPilot != 0" class="card">
+    <div v-if="!isLoading && populated && currentPilot && currentPilot != 0" class="card">
       <table class="table table-striped">
         <thead class="thead-dark">
           <tr>
@@ -36,7 +36,7 @@ export default {
       return this.$store.state.currentComp.isLoading;
     },
     populated() {
-      return this.$store.state.currentComp.rounds != [];
+      return this.$store.state.currentComp.populated;
     },
     currentPilot() {
       return this.$store.state.currentComp.currentPilot;
