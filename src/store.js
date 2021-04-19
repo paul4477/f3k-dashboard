@@ -139,10 +139,7 @@ const timer = {
       // running: true,
       slotState: '',
       canFly: false,
-      finishTime: Date(),
-      shortTaskDescription: '',
-      taskDescription: ''
-  
+      finishTime: Date()
     },
     getters: {
       compId (state, getters, rootState) {
@@ -151,34 +148,6 @@ const timer = {
       }
     },
     actions: {
-      updateRoundInfo (context) {
-        // console.log('updateRoundInfo', context)
-        // fetch(API_URL + `/comp/${this.compId}/round/${this.round}`)
-        if (context.getters.compId) {
-          axios.get(API_URL + `/comp/${context.getters.compId}/round/${context.state.round}`)
-            .then(response => {
-              context.commit('SET_TASK_DESC', response.data.F3KTaskDescription)
-              context.commit('SET_SHORT_TASK_DESC', response.data.F3KTaskAbbreviation)
-            })
-            // .catch(e => {})
-            .finally(() => { })
-        }
-      }
-    },
-    mutations: {
-      SET_TASK_DESC (state, payload) {
-        // console.log('SET_TASK_DESC', payload)
-        state.TaskDescription = payload
-      },
-      SET_ROUND (state, payload) {
-        console.log('SET_ROUND', payload)
-        state.round = payload
-      },
-  
-      SET_SHORT_TASK_DESC (state, payload) {
-        // console.log('SET_SHORT_TASK_DESC', payload)
-        state.shortTaskDescription = payload
-      },
       UPDATE (state, payload) {
         //console.log('slot/UPDATE', state.round, payload.round)
         if ((state.round !== payload.round)) {
