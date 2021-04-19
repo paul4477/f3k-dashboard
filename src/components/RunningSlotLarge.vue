@@ -136,7 +136,7 @@ export default {
   mounted() {
     setInterval(() => {
       var timeLeft = 0
-      
+      console.log(this.$store.state.slot.finishTime, this.ts.now(), this.$store.state.slot.finishTime - this.ts.now(), (this.$store.state.slot.finishTime - this.ts.now()) / 1000)
       timeLeft = (this.$store.state.slot.finishTime - this.ts.now()) / 1000;
 
       if (timeLeft <= 0) {
@@ -144,7 +144,7 @@ export default {
       } else {
         this.timeRemaining = timeLeft;
       }
-    }, 40);
+    }, 100);
   },
 };
 </script>
