@@ -46,10 +46,8 @@ export default {
     }
   },
   created() {
-    console.log('Create ShowEvent', this.populated, this.$route.params.id, this.eventData.event_id);
-    
+    //console.log('Create ShowEvent', this.populated, this.$route.params.id, this.eventData.event_id);
     if (this.$route.params.id && this.eventData.event_id != this.$route.params.id) {
-      //console.log('Calling currentComp/populate_data from EventHeader')
       this.$store.dispatch("currentComp/populate_data", this.$route.params.id);
     }
   }

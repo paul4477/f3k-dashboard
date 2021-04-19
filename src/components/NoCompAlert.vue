@@ -19,7 +19,7 @@ export default {
     }
   },
   created () {
-   console.log('Created NoCompAlert', this.populated, this.isLoading,this.$store.state.currentComp ); 
+   //console.log('Created NoCompAlert', this.populated, this.isLoading,this.$store.state.currentComp ); 
    if (Vue.$cookies.isKey('currentEvent')) {
       this.$store.state.comp.id = Vue.$cookies.get('currentEvent')
     }
