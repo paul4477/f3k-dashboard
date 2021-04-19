@@ -135,22 +135,16 @@ export default {
   },
   mounted() {
     setInterval(() => {
-      console.log(process.env.NODE_ENV, this.$store.state.slot.finishTime)
-      
       var timeLeft = 0
-      if (process.env.NODE_ENV == 'production') {
-        timeLeft = (this.$store.state.slot.finishTime - this.ts.now()) / 1000;
-      }
-      else {
-        timeLeft = (this.$store.state.slot.finishTime) / 1000;
-      }
+      
+      timeLeft = (this.$store.state.slot.finishTime - this.ts.now()) / 1000;
 
       if (timeLeft <= 0) {
         this.timeRemaining = 0;
       } else {
         this.timeRemaining = timeLeft;
       }
-    }, 1000);
+    }, 40);
   },
 };
 </script>
