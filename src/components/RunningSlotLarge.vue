@@ -136,8 +136,8 @@ export default {
   mounted() {
     setInterval(() => {
       var timeLeft = 0
-      console.log(this.$store.state.slot.finishTime, this.ts.now(), this.$store.state.slot.finishTime - this.ts.now(), (this.$store.state.slot.finishTime - this.ts.now()) / 1000)
-      timeLeft = (this.$store.state.slot.finishTime - this.ts.now()) / 1000;
+      console.log(this.$store.state.slot.finishTime, this.$store.state.slot.finishTime.getTime(), this.ts.now(), this.$store.state.slot.finishTime - this.ts.now(), (this.$store.state.slot.finishTime.getTime() - this.ts.now()) / 1000)
+      timeLeft = (this.$store.state.slot.finishTime.getTime() - this.ts.now()) / 1000;
 
       if (timeLeft <= 0) {
         this.timeRemaining = 0;
