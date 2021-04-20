@@ -140,15 +140,10 @@ const slot = {
         return rootState.currentComp.eventDataRaw.event_id
       }
     },
-    actions: {
+    mutations: {
       UPDATE (state, payload) {
         //console.log('slot/UPDATE', state.round, payload.round)
-        if ((state.round !== payload.round)) {
-          state.round = payload.round
-          if (payload.round !== '00') {
-            store.dispatch('slot/updateRoundInfo')
-          }
-        }
+        state.round = payload.round
         state.group = payload.group
         // console.log(payload.endTime)
         state.finishTime = new Date(payload.endTime)
@@ -168,7 +163,7 @@ const store = new Vuex.Store({
     }
 })
 
-var API_URL = 'http://f3k.herokuapp.com/api/events'
+var API_URL = '/api/events'
 if (process.env.NODE_ENV == 'production') {API_URL = '/api/events'}
 
 const eventSource = new EventSource(API_URL)

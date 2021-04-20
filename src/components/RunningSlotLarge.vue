@@ -146,7 +146,7 @@ export default {
       } else {
         this.timeRemaining = timeLeft;
       }
-    }, 2000);
+    }, 100);
   },
 };
 </script>
