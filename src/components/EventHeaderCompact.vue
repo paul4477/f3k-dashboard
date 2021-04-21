@@ -1,9 +1,8 @@
 <template>
   <div>
     <div v-if="!isLoading && populated" class="card">
-      <div class="card-body">
+      <div class="card-body pt-2 pb-0">
         <div class="row">
-          
           <div class="col px-1">
             <h4 class="card-title">{{ eventData.event_name }}</h4>
           </div>
