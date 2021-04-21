@@ -14,6 +14,7 @@
                         <router-link data-toggle="collapse" data-target="#collapsibleNavbar" tag="button" class="btn btn-primary" class-active="btn btn-outline-primary" to="/event">Groups</router-link>
                         <router-link data-toggle="collapse" data-target="#collapsibleNavbar" tag="button" class="btn btn-primary" class-active="btn btn-outline-primary" to="/roundstatus">Live</router-link>
                         <router-link data-toggle="collapse" data-target="#collapsibleNavbar" tag="button" class="btn btn-primary" class-active="btn btn-outline-primary" to="/scoring">Scoring</router-link>
+                        <router-link data-toggle="collapse" data-target="#collapsibleNavbar" tag="button" class="btn btn-primary" class-active="btn btn-outline-primary" to="/scoring">Results</router-link>
                         <router-link data-toggle="collapse" data-target="#collapsibleNavbar" tag="button" class="btn btn-primary" class-active="btn btn-outline-primary" to="/about">About</router-link>
         <!--<ul class="navbar-nav">
         <li class="nav-item"><router-link data-toggle="collapse" data-target="#collapsibleNavbar" class="nav-link" class-active="nav-link active" to="/roundstatus">Current Round</router-link></li>
