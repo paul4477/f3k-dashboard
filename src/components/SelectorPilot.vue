@@ -1,13 +1,16 @@
 <template>
   <transition v-if="!isLoading && populated" name="fade">
     <form>
-      <div class="form-inline my-3">
+      <div class="input-group input-group-lg mb-2">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Pilot</span>
+        </div>
         <select
           class="form-control form-control-lg"
           id="pilot"
-          v-model="$store.state.currentComp.currentPilot"
+          v-model="currentPilot"
         >
-          <option value="0">Select a pilot...</option>
+          <option selected value="0">Select a pilot...</option>
           <option
             v-for="pilot in pilotData"
             :key="pilot.pilot_id"
@@ -16,6 +19,7 @@
           >
         </select>
       </div>
+
       <!-- <button v-on:click="setCompID" class="btn btn-primary">Set Competition</button> -->
     </form>
   </transition>
@@ -24,9 +28,17 @@
 
 <script>
 export default {
-  name: "PilotChooser",
+  name: "SelectorPilot",
 
   computed: {
+    currentPilot: {
+      get () {
+        return this.$store.state.currentComp.currentPilot
+      },
+      set (value) {
+        this.$store.commit('currentComp/updatePilot', value)
+      },
+    },
     pilotData() {
       return this.$store.state.currentComp.eventDataRaw.pilots;
     },
@@ -35,9 +47,6 @@ export default {
     },
     populated() {
       return this.$store.state.currentComp.populated;
-    },
-    currentPilot() {
-      return this.$store.state.currentComp.currentPilot;
     }
   }
 };

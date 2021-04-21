@@ -136,17 +136,13 @@ export default {
   mounted() {
     setInterval(() => {
       const timeLeft = (this.$store.state.slot.finishTime - this.ts.now()) / 1000
-      //console.log(this.$store.state.slot)
-      //console.log(timeLeft)
-      //console.log(this.$store.state.slot.finishTime, this.$store.state.slot.finishTime.getTime(), this.ts.now(), this.$store.state.slot.finishTime - this.ts.now(), (this.$store.state.slot.finishTime.getTime() - this.ts.now()) / 1000)
-      //timeLeft = (this.$store.state.slot.finishTime.getTime() - this.ts.now()) / 1000;
 
       if (timeLeft <= 0) {
         this.timeRemaining = 0;
       } else {
         this.timeRemaining = timeLeft;
       }
-    }, 100);
+    }, 40);
   },
 };
 </script>

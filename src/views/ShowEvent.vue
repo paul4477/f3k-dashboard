@@ -8,7 +8,7 @@
     </div>
     <div class="row">
       <div class="col-lg">
-        <PilotChooser />
+        <SelectorPilot />
       </div>
     </div>
     <div class="row">
@@ -23,7 +23,7 @@
 // @ is an alias to /src
 import NoCompAlert from "@/components/NoCompAlert.vue";
 import EventHeader from "@/components/EventHeader.vue";
-import PilotChooser from "@/components/PilotChooser.vue";
+import SelectorPilot from "@/components/SelectorPilot.vue";
 import PilotGroupList from "@/components/PilotGroupList.vue";
 
 export default {
@@ -31,7 +31,7 @@ export default {
   components: {
     NoCompAlert,
     EventHeader,
-    PilotChooser,
+    SelectorPilot,
     PilotGroupList
   },
   computed: {

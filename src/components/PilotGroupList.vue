@@ -21,6 +21,9 @@
       </tbody>
     </table>
   </div>
+  <div v-if="!isLoading && (!currentPilot || currentPilot == 0)" class="card">
+      <h2>Select a pilot to view group info for each round.</h2>
+  </div>
   </transition>
 </template>
 

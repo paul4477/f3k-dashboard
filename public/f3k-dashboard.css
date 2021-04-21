@@ -57,4 +57,18 @@
       transform: rotate(360deg);
     }
   }
+  body {
+    font-size: 18pt;
+  }
+  .input-group-text {
+    background-color:rgb(138, 207, 247);
+    font-weight: bold;
+  }
+    input[type="text"] {
+      font-size: 20pt;
+      font-family: monospace;
+  }
+
+
+  
   
