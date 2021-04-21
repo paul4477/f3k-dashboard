@@ -50,6 +50,8 @@ const currentComp = {
     namespaced: true,
     state: {
         currentPilot: null,
+        currentScoringPilot: null,
+        currentScoringRound: null,
         eventDataRaw: {},
         populated: false,
         isLoading: false,
@@ -90,6 +92,15 @@ const currentComp = {
                 })
             })
             state.drawByPilot = draw
+        },
+        updatePilot(state, value) {
+            state.currentPilot = value
+        },
+        updateScoringPilot(state, value) {
+            state.currentScoringPilot = value
+        },
+        updateScoreRound(state, value) {
+            state.currentScoringRound = value
         }
     },
     actions: {
