@@ -1,5 +1,8 @@
 <template>
   <div id="appmain">
+
+
+
     <NoCompAlert />
     <div class="row">
       <div class="col-lg"><EventHeaderCompact /></div>
