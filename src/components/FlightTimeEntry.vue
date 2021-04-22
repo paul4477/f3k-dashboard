@@ -17,7 +17,7 @@
             </p>
             <input
               type="text"
-              class="form-control"
+              class="form-control time"
               style="width: auto; text-align: right"
               size="7"
               maxlength="7"

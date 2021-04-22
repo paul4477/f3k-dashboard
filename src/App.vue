@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="container-sm px-0">
 
     <div class="modal fade" id="modalVault" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">

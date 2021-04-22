@@ -1,76 +1,71 @@
 /* Make clicks pass-through */
+
 #nprogress {
-    pointer-events: none;
+  pointer-events: none;
+}
+
+#nprogress .bar {
+  background: #29d;
+  display: none;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  width: 1000%;
+  height: 5px;
+}
+
+/* Remove these to get rid of the spinner */
+
+#nprogress .spinner {
+  display: block;
+  position: fixed;
+  z-index: 100;
+  top: 50vh;
+  left: 45vw;
+}
+
+#nprogress .spinner-icon {
+  width: 2rem;
+  height: 2rem;
+  box-sizing: border-box;
+  border: solid 2px transparent;
+  border-top-color: #29d;
+  border-left-color: #29d;
+  border-radius: 50%;
+  -webkit-animation: nprogress-spinner 400ms linear infinite;
+  animation: nprogress-spinner 400ms linear infinite;
+}
+
+@-webkit-keyframes nprogress-spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
   }
-  
-  #nprogress .bar {
-    background: #29d;
-    display: none;
-    position: fixed;
-    z-index: 100;
-    top: 0;
-    left: 0;
-  
-    width: 1000%;
-    height: 5px;
+  100% {
+    -webkit-transform: rotate(360deg);
   }
-  
-  /* Remove these to get rid of the spinner */
-  #nprogress .spinner {
-    display: block;
-    position: fixed;
-    z-index: 100;
-    top: 50vh;
-    left: 45vw;
+}
+
+@keyframes nprogress-spinner {
+  0% {
+    transform: rotate(0deg);
   }
-  
-  #nprogress .spinner-icon {
-    width: 2rem;
-    height: 2rem;
-    box-sizing: border-box;
-  
-    border: solid 2px transparent;
-    border-top-color: #29d;
-    border-left-color: #29d;
-    border-radius: 50%;
-  
-    -webkit-animation: nprogress-spinner 400ms linear infinite;
-    animation: nprogress-spinner 400ms linear infinite;
+  100% {
+    transform: rotate(360deg);
   }
-  
-  @-webkit-keyframes nprogress-spinner {
-    0% {
-      -webkit-transform: rotate(0deg);
-    }
-  
-    100% {
-      -webkit-transform: rotate(360deg);
-    }
-  }
-  
-  @keyframes nprogress-spinner {
-    0% {
-      transform: rotate(0deg);
-    }
-  
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-  body {
-    
-  }
-  .input-group-text {
-    background-image: linear-gradient(#54b4eb,#2fa4e7 60%,#1d9ce5);
-    background-color: #2fa4e7!important;
-    font-weight: bold;
-    color: white;
-  }
-    input[type="text"] {
-      font-size: 20pt;
-      font-family: monospace;
-  }
+}
+
+body {}
+
+.input-group-text {
+  background-image: linear-gradient(#54b4eb, #2fa4e7 60%, #1d9ce5);
+  background-color: #2fa4e7!important;
+  font-weight: bold;
+  color: white;
+}
 
 
-  
-  
+input.time {
+  font-family: monospace;
+  font-size: 24pt;
+}
