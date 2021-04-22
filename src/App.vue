@@ -1,6 +1,24 @@
 <template>
   <div id="app">
-      <nav class="navbar navbar-dark bg-dark">
+
+    <div class="modal fade" id="modalVault" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-body mb-0 p-0">
+                    <div class="embed-responsive embed-responsive-16by9 z-depth-1-half" style="height: 500px">
+                        <iframe id="modaliframe" class="embed-responsive-item" src="" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-primary btn-md ml-4" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+      <nav class="navbar navbar-dark bg-primary">
         
         <router-link class="navbar-brand" class-active="nav-link active" to="/">
         <img src="./assets/glider15.svg" height="25" alt="">
@@ -11,11 +29,11 @@
         </button>
       </nav>
       
-      <div class="navbar navbar-dark bg-dark collapse navbar-collapse" id="collapsibleNavbar">
+      <div class="navbar bg-primary collapse navbar-collapse" id="collapsibleNavbar">
         <div class="btn-group" role="toolbar">
-          <router-link data-toggle="collapse" data-target="#collapsibleNavbar" tag="button" class="btn btn-primary" class-active="btn btn-outline-primary" to="/event">Groups</router-link>
-          <router-link data-toggle="collapse" data-target="#collapsibleNavbar" tag="button" class="btn btn-primary" class-active="btn btn-outline-primary" to="/roundstatus">Live</router-link>
-          <router-link data-toggle="collapse" data-target="#collapsibleNavbar" tag="button" class="btn btn-outline-primary" class-active="btn btn-outline-primary" to="/scoring">Scoring</router-link>
+          <router-link data-toggle="collapse" data-target="#collapsibleNavbar" tag="button" class="btn btn-secondary" class-active="btn btn-outline-primary" to="/event">Groups</router-link>
+          <router-link data-toggle="collapse" data-target="#collapsibleNavbar" tag="button" class="btn btn-secondary" class-active="btn btn-outline-primary" to="/roundstatus">Live</router-link>
+          <router-link data-toggle="collapse" data-target="#collapsibleNavbar" tag="button" class="btn btn-outline-secondary" class-active="btn btn-outline-primary" to="/scoring">Scoring</router-link>
           
           <div v-if="$store.state.currentComp.populated" class="btn-group" role="group">
           <form name="f3xvault_self_entry" method="POST" v-bind:action="'https://www.f3xvault.com/?action=event&function=event_view&event_id=' + $store.state.currentComp.eventDataRaw.event_id">
@@ -23,12 +41,12 @@
             <input type="hidden" name="function" value="event_self_entry">
             <input type="hidden" name="event_id" v-bind:value="$store.state.currentComp.eventDataRaw.event_id">
           </form>
-            <button id="f3xbuttongrp" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button id="f3xbuttongrp" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               F3XVault
             </button>
             
             <div class="dropdown-menu" aria-labelledby="f3xbuttongrp">
-              <a class="dropdown-item" v-bind:href="'https://www.f3xvault.com/?action=event&function=event_view&event_id=' + $store.state.currentComp.eventDataRaw.event_id">View Event</a>
+              <a class="dropdown-item" @click="goToVaultEvent">View Standings</a>
               <a class="dropdown-item" onclick="document.f3xvault_self_entry.submit()" href="#">Scoring</a>
             </div>
           </div>
@@ -54,6 +72,13 @@
 <script>
 export default {
   name: "App",
+  methods: {
+    goToVaultEvent() {
+      const vaultEventURL = "https://www.f3xvault.com/?action=event&function=event_view&event_id=" + this.$store.state.currentComp.eventDataRaw.event_id
+      $("#modaliframe").attr('src', vaultEventURL)
+      $('#modalVault').modal('toggle')
+    },
+  }
 };
 </script>
 

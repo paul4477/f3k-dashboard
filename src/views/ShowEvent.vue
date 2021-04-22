@@ -2,7 +2,7 @@
   <div id="appmain">
     <NoCompAlert />
     <div class="row">
-      <div class="col-lg">
+      <div class="col">
         <EventHeader />
       </div>
     </div>
@@ -12,7 +12,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-lg">
+      <div class="col">
         <PilotGroupList />
       </div>
     </div>

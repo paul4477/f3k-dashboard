@@ -2,9 +2,7 @@
   <transition v-if="!isLoading && populated" name="fade">
     <form>
       <div class="input-group input-group-lg mb-2">
-        <div class="input-group-prepend">
-          <span class="input-group-text">Pilot</span>
-        </div>
+        
         <select
           class="form-control form-control-lg"
           id="pilot"
@@ -19,6 +17,9 @@
             {{ pilot.pilot_first_name + " " + pilot.pilot_last_name }}
           </option>
         </select>
+        <div class="input-group-append">
+          <span class="input-group-text">Pilot</span>
+        </div>
       </div>
 
       <!-- <button v-on:click="setCompID" class="btn btn-primary">Set Competition</button> -->
