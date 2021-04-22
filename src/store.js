@@ -26,8 +26,8 @@ const events = {
                 method: "post",
                 params: {
                     function: "searchEvents",
-                    country: "GB",
-                    event_type_code: "f3k",
+                    country: process.env.VUE_APP_LIMIT_EVENT_COUNTRY || process.env.LIMIT_EVENT_COUNTRY || 'GB',
+                    event_type_code: process.env.VUE_APP_LIMIT_EVENT_TYPE || process.env.VUE_APP_LIMIT_EVENT_TYPE || 'f3k',
                 }
             };
 
