@@ -43,8 +43,8 @@ import taskScorer from "@/tasks.js";
 
 export default {
   name: "EventHeader",
-    state: {
-    clicks: 0
+  state: {
+    clicks: 0,
   },
   computed: {
     roundToScore: {
@@ -83,24 +83,22 @@ export default {
   },
   methods: {
     checkDouble(event) {
-      console.log('click')
+      console.log("click");
       if (this.clicks < 1) {
-        this.clicks = this.clicks + 1
+        this.clicks = this.clicks + 1;
 
         setTimeout(() => {
-          this.clicks = 0
+          this.clicks = 0;
         }, 500);
       } else {
         // clearTimeout(this.timeoutId)
-        this.clicks = 0
-        
-        // Add code to set to max here:
-        event.target.rawInput = "3000"
-        this.reFormat(event.target)
-        //event.target.blur()
+        this.clicks = 0;
 
-        }
-      
+        // Add code to set to max here:
+        event.target.rawInput = "3000";
+        this.reFormat(event.target);
+        //event.target.blur()
+      }
     },
     reFormat(input) {
       const decimals = 1;
@@ -189,11 +187,11 @@ export default {
 
     // Store raw input separately to the value displayed
     updateOnKey(event) {
-      // Don't allow the event to update the box "normally"
-      event.preventDefault();
 
       // Check the key is an integer
       if (isFinite(event.key)) {
+        // Don't allow the event to update the box "normally"
+        event.preventDefault();
         // Set up the blank rawInput value if not already there - it should be - but lets be sure
         if (!event.target.hasOwnProperty("rawInput")) {
           event.target.rawInput = "";
@@ -204,10 +202,17 @@ export default {
         this.reFormat(event.target);
       }
       if (event.key == "Backspace") {
+        // Don't allow the event to update the box "normally"
+        event.preventDefault();
         // Remove last character from the rawInput string
         event.target.rawInput = event.target.rawInput.slice(0, -1);
         this.reFormat(event.target);
       }
+      if (event.key == "Enter") {
+        //event.target.rawInput = event.target.rawInput.slice(0, -1);
+        event.target.blur()
+      }
+
       // Ignore if its not an integer or backspace
     },
   },
