@@ -30,7 +30,7 @@
         class="col flex-fill h1"
         v-bind:class="{ 'text-primary': canFly, 'text-light': !canFly }"
       >
-        <strong>{{  rounds[parseInt(round)].flight_type_name_short }}</strong>
+        <strong>{{  rounds[parseInt(round) - 1].flight_type_name_short }}</strong>
       </div>
     </div>
 
@@ -65,7 +65,7 @@
         class="col flex-fill h3"
         v-bind:class="{ 'text-primary': canFly, 'text-light': !canFly }"
       >
-        {{  rounds[parseInt(round)].flight_type_description }}
+        {{  rounds[parseInt(round) - 1].flight_type_description }}
       </div>
     </div>
 
