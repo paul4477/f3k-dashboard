@@ -95,9 +95,11 @@ const currentComp = {
         },
         updatePilot(state, value) {
             state.currentPilot = value
+            Vue.$cookies.set('currentPilot', value)
         },
         updateScoringPilot(state, value) {
             state.currentScoringPilot = value
+            Vue.$cookies.set('currentScoringPilot', value)
         },
         updateScoreRound(state, value) {
             state.currentScoringRound = value

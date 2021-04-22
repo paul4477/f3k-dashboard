@@ -28,6 +28,8 @@
 </template>
 
 <script>
+import Vue from "vue";
+
 export default {
   name: "SelectorScoringPilot",
 
@@ -49,6 +51,11 @@ export default {
         this.$store.commit("currentComp/updateScoringPilot", value);
       },
     },
+  },
+  mounted() {
+    if (Vue.$cookies.isKey("currentScoringPilot")) {
+      this.currentScoringPilot = Vue.$cookies.get("currentScoringPilot");
+    }
   },
 };
 </script>

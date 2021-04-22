@@ -15,28 +15,30 @@
             v-for="pilot in pilotData"
             :key="pilot.pilot_id"
             v-bind:value="pilot.pilot_id"
-            >{{ pilot.pilot_first_name + " " + pilot.pilot_last_name }}</option
           >
+            {{ pilot.pilot_first_name + " " + pilot.pilot_last_name }}
+          </option>
         </select>
       </div>
 
       <!-- <button v-on:click="setCompID" class="btn btn-primary">Set Competition</button> -->
     </form>
   </transition>
-
 </template>
 
 <script>
+import Vue from "vue";
+
 export default {
   name: "SelectorPilot",
 
   computed: {
     currentPilot: {
-      get () {
-        return this.$store.state.currentComp.currentPilot
+      get() {
+        return this.$store.state.currentComp.currentPilot;
       },
-      set (value) {
-        this.$store.commit('currentComp/updatePilot', value)
+      set(value) {
+        this.$store.commit("currentComp/updatePilot", value);
       },
     },
     pilotData() {
@@ -47,7 +49,12 @@ export default {
     },
     populated() {
       return this.$store.state.currentComp.populated;
+    },
+  },
+  mounted() {
+    if (Vue.$cookies.isKey("currentPilot")) {
+      this.currentPilot = Vue.$cookies.get("currentPilot");
     }
-  }
+  },
 };
 </script>
