@@ -58,8 +58,8 @@
 body {}
 
 .input-group-text {
-  background-image: linear-gradient(#54b4eb, #2fa4e7 60%, #1d9ce5);
-  background-color: #2fa4e7!important;
+  background-image: linear-gradient(#cedfe97c, #2fa4e77c 60%, #1d9ce57c);
+  background-color: #2fa4e75b!important;
   font-weight: bold;
   color: white;
 }
