@@ -6,7 +6,7 @@ Its intended to be used at the flying field on a mobile device.
 The first release aims to provide:
 
  - Event selection (currently filtered to just UK F3K events)
- - View of round/group info (to easily answer the perpetual question of "What group am I in?"
+ - View of round/group info - to easily answer the perpetual questions of "What group am I in?"
  - View of live round timer with details of prep-time, flying vs non-flying time, landing window etc
  - End of round time submission
  - Basic view of current standings, updated each round
