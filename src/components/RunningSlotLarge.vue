@@ -30,7 +30,7 @@
         class="col flex-fill h1"
         v-bind:class="{ 'text-primary': canFly, 'text-light': !canFly }"
       >
-        <strong>{{  rounds[parseInt(round) - 1].flight_type_name_short }}</strong>
+      <strong>{{  (parseInt(round) == 0) ? '- - -' : rounds[parseInt(round) - 1].flight_type_name_short }}</strong>
       </div>
     </div>
 
@@ -65,7 +65,7 @@
         class="col flex-fill h3"
         v-bind:class="{ 'text-primary': canFly, 'text-light': !canFly }"
       >
-        {{  rounds[parseInt(round) - 1].flight_type_description }}
+        {{  (parseInt(round) == 0) ? '- - -' : rounds[parseInt(round) - 1].flight_type_description }}
       </div>
     </div>
 
@@ -135,7 +135,7 @@ export default {
   },
   mounted() {
     setInterval(() => {
-      const timeLeft = (this.$store.state.slot.finishTime - this.ts.now()) / 1000
+      const timeLeft = (this.$store.state.slot.finishTime)// - this.ts.now()) / 1000
 
       if (timeLeft <= 0) {
         this.timeRemaining = 0;
