@@ -1,6 +1,28 @@
 <template>
-  <div>
-    <div v-if="!isLoading && populated" class="card">
+  <div v-if="!isLoading && populated">
+    <div
+      v-for="event in list"
+      :key="event.event_id"
+      class="media position-relative border rounded mb-2"
+      
+    >
+   
+      <img src="../assets/pdrf3k.svg" class="mr-3" style="height: 6.5em">
+      <div class="media-body">
+        <router-link :to="'/event/' + event.event_id" class="stretched-link">
+          <div class="card-body">
+            <h4 class="font-weight-bold">{{ event.event_name }}</h4>
+            <h5>{{ event.event_start_date }}</h5>
+          </div>
+        </router-link>
+      </div>
+
+    </div>
+  </div>
+    
+    
+    
+<!--    <div  class="card">
       <div
         v-for="event in list"
         :key="event.event_id"
@@ -14,7 +36,7 @@
         </router-link>
       </div>
     </div>
-  </div>
+  </div>-->
 </template>
 
 <script>
