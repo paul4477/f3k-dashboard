@@ -11,3 +11,4 @@ The first release aims to provide:
  - End of round time submission
  - Basic view of current standings, updated each round
 
+As this is designed for use at UK F3K league events it only supports F3K and can only manage one live timer feed at once.
