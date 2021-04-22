@@ -1,6 +1,25 @@
 <template>
   <div>
-    <div v-if="!isLoading && populated && roundToScore > 0" class="card">
+    <div v-if="!isLoading && populated && roundToScore >= 0" class="card">
+      <div class="row" v-for="task in taskInfo" :key="task[0]">
+            <input
+              type="text"
+              class="form-control time"
+              style="width: auto; text-align: right"
+              size="7"
+              maxlength="7"
+              pattern="[0-9]*"
+              inputmode="numeric"
+              v-on:keydown="updateOnKey($event)"
+              @blur="validateValue($event, 9)"
+              @focus="clearValue($event)"
+            />
+            Max: {{ task[1] | secondsToString }}
+
+      </div>
+      <button class="btn btn-primary">Submit Scores</button>
+
+
       <div class="card-body">
         <div class="row">
           <div class="col-8 px-1">
@@ -15,6 +34,7 @@
               <strong>Date:</strong>
               {{ new Date(eventData.start_date).toDateString() }}
             </p>
+            {{taskInfo}}
             <input
               type="text"
               class="form-control time"
@@ -49,6 +69,7 @@ export default {
   computed: {
     roundToScore: {
       get() {
+        console.log(this.$store.state.currentComp.currentScoringRound)
         return this.$store.state.currentComp.currentScoringRound - 1;
       },
     },
@@ -73,6 +94,9 @@ export default {
     times() {
       // if state doesn't have times then get default for the round to submit
       // check the backend for existing times?
+    },
+    taskInfo() {
+      return taskScorer.scoreTask([{'time': 0, 'valid': false}], this.rounds[this.roundToScore].flight_type_code )
     },
     ...mapState("slot", ["round", "group"]),
   },
