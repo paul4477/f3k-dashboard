@@ -135,7 +135,7 @@ export default {
   },
   mounted() {
     setInterval(() => {
-      const timeLeft = (this.$store.state.slot.finishTime)// - this.ts.now()) / 1000
+      const timeLeft = (this.$store.state.slot.finishTime - this.ts.now()) / 1000
 
       if (timeLeft <= 0) {
         this.timeRemaining = 0;
