@@ -29,13 +29,14 @@
         </button>
       </nav>
       
-      <div class="navbar bg-primary collapse navbar-collapse" id="collapsibleNavbar">
+      <div class="navbar collapse justify-content-around bg-primary" id="collapsibleNavbar">
         <div class="btn-group" role="toolbar">
           <router-link data-toggle="collapse" data-target="#collapsibleNavbar" tag="button" class="btn btn-secondary" class-active="btn btn-outline-primary" to="/event">Groups</router-link>
           <router-link data-toggle="collapse" data-target="#collapsibleNavbar" tag="button" class="btn btn-secondary" class-active="btn btn-outline-primary" to="/roundstatus">Live</router-link>
           
           <router-link v-if="!production" data-toggle="collapse" data-target="#collapsibleNavbar" tag="button" class="btn btn-outline-secondary" class-active="btn btn-outline-primary" to="/scoring">Scoring</router-link>
-          
+        </div>
+        <div class="btn-group" role="toolbar">
           <div v-if="$store.state.currentComp.populated" class="btn-group" role="group">
           <form name="f3xvault_self_entry" method="POST" target="_blank" v-bind:action="'https://www.f3xvault.com/?action=event&function=event_view&event_id=' + $store.state.currentComp.eventDataRaw.event_id">
             <input type="hidden" name="action" value="event">
