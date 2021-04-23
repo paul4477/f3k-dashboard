@@ -33,7 +33,8 @@
         <div class="btn-group" role="toolbar">
           <router-link data-toggle="collapse" data-target="#collapsibleNavbar" tag="button" class="btn btn-secondary" class-active="btn btn-outline-primary" to="/event">Groups</router-link>
           <router-link data-toggle="collapse" data-target="#collapsibleNavbar" tag="button" class="btn btn-secondary" class-active="btn btn-outline-primary" to="/roundstatus">Live</router-link>
-          <router-link data-toggle="collapse" data-target="#collapsibleNavbar" tag="button" class="btn btn-outline-secondary" class-active="btn btn-outline-primary" to="/scoring">Scoring</router-link>
+          
+          <router-link v-if="!production" data-toggle="collapse" data-target="#collapsibleNavbar" tag="button" class="btn btn-outline-secondary" class-active="btn btn-outline-primary" to="/scoring">Scoring</router-link>
           
           <div v-if="$store.state.currentComp.populated" class="btn-group" role="group">
           <form name="f3xvault_self_entry" method="POST" v-bind:action="'https://www.f3xvault.com/?action=event&function=event_view&event_id=' + $store.state.currentComp.eventDataRaw.event_id">
@@ -72,13 +73,15 @@
 <script>
 export default {
   name: "App",
+  data () {return {production: false}},
   methods: {
     goToVaultEvent() {
       const vaultEventURL = "https://www.f3xvault.com/?action=event&function=event_view&event_id=" + this.$store.state.currentComp.eventDataRaw.event_id
       $("#modaliframe").attr('src', vaultEventURL)
       $('#modalVault').modal('toggle')
     },
-  }
+  },
+  created() { this.production = (process.env.NODE_ENV === "production") },
 };
 </script>
 
