@@ -157,7 +157,8 @@ const slot = {
       UPDATE (state, payload) {
         //console.log('slot/UPDATE', state.round, payload.round)
         state.round = payload.round
-        state.group = payload.group
+        //console.log(payload.group, parseInt(payload.group))
+        state.group = ['A','B','C','D','E','F','G','H','I','J','K','L','M'][parseInt(payload.group) - 1]
         // console.log(payload.endTime)
         state.finishTime = new Date(payload.endTime)
         state.slotState = payload.type
