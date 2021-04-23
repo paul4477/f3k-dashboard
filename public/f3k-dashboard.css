@@ -58,10 +58,11 @@
 body {}
 
 .input-group-text {
-  background-image: linear-gradient(#cedfe97c, #2fa4e77c 60%, #1d9ce57c);
-  background-color: #2fa4e75b!important;
-  font-weight: bold;
+  /*background-image: linear-gradient(#cedfe97c, #2fa4e77c 60%, #1d9ce57c);
   color: white;
+  background-color: #2fa4e75b!important;*/
+  font-weight: bold;
+  
 }
 
 
