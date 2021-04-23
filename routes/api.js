@@ -127,7 +127,7 @@ api.get('/slotInfo', (req, res) => {
 // take input from external updates
 api.get('/clock/:timerString', (req, res) => {
     runningSlot.update(req.params.timerString);
-    res.status(200).send(runningSlot);
+    res.status(200).send('OK') //.send(runningSlot);
 });
 
 // /api/events
@@ -160,7 +160,7 @@ eventsRouter.get('/', async (req, res) => {
     // When client closes connection we update the clients list
     // avoiding the disconnected one
     req.on('close', () => {
-        console.log(`${clientId} Connection closed`);
+        // console.log(`${clientId} Connection closed`);
         clients = clients.filter(c => c.id !== clientId);
     });
 });

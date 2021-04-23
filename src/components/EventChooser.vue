@@ -62,7 +62,7 @@ export default {
   },
 
   created() {
-    console.log(this.populated);
+    //console.log(this.populated);
 
     if (!this.populated) {
       this.$store.dispatch("events/populate_events");

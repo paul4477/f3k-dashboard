@@ -109,7 +109,7 @@ const currentComp = {
         populate_data(context, event_id) {
             context.commit('SET_ISLOADING')
 
-            console.log('Loading data for event:', event_id)
+            //console.log('Loading data for event:', event_id)
 
             var config = {
                 method: "post",
