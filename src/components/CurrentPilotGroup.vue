@@ -1,7 +1,7 @@
 <template>
   <transition name="fade">
     <div v-if="!isLoading && populated && currentPilot && currentPilot != 0" class="card">
-      <h3>Pilot: {{pilotsByID[currentPilot].pilot_first_name}} {{pilotsByID[currentPilot].pilot_last_name}} is flying in Group {{group}}</h3>
+      <h4>{{pilotsByID[currentPilot].pilot_first_name}} {{pilotsByID[currentPilot].pilot_last_name}} is flying in Group {{group}}</h4>
   </div>
   </transition>
 </template>
