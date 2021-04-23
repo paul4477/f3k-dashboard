@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-if="!isLoading && populated && roundToScore >= 0" class="card">
-      <div class="row" v-for="task in taskInfo" :key="task[0]">
+      <div class="row" v-for="(time, index) in processedTimes" :key="'time_'+index">
             <input
               type="text"
               class="form-control time"
@@ -10,11 +10,13 @@
               maxlength="7"
               pattern="[0-9]*"
               inputmode="numeric"
+              v-bind:id="index"
+              v-bind:value="time[0] | secondsToString"
               v-on:keydown="updateOnKey($event)"
               @blur="validateValue($event, 9)"
               @focus="clearValue($event)"
             />
-            Max: {{ task[1] | secondsToString }}
+            Max: {{ time[1] | secondsToString }}
 
       </div>
       <button class="btn btn-primary">Submit Scores</button>
@@ -63,13 +65,13 @@ import taskScorer from "@/tasks.js";
 
 export default {
   name: "EventHeader",
-  state: {
-    clicks: 0,
+  data () {
+    return {clicks: 0, processedTime: [], penalty: 0}
   },
   computed: {
     roundToScore: {
       get() {
-        console.log(this.$store.state.currentComp.currentScoringRound)
+        //console.log(this.$store.state.currentComp.currentScoringRound)
         return this.$store.state.currentComp.currentScoringRound - 1;
       },
     },
@@ -95,15 +97,16 @@ export default {
       // if state doesn't have times then get default for the round to submit
       // check the backend for existing times?
     },
-    taskInfo() {
-      return taskScorer.scoreTask([{'time': 0, 'valid': false}], this.rounds[this.roundToScore].flight_type_code )
+    processedTimes() {
+      
     },
     ...mapState("slot", ["round", "group"]),
   },
-  mounted() {
+  created() {
     //console.log(this.round)
     //var results = taskScorer.scoreTask([{'time': 0, 'valid': false}], this.rounds[parseInt(this.round)].flight_type_code )
     //console.log(results)
+    this.processedTimes = taskScorer.scoreTask([{'time': 0, 'valid': false}], this.rounds[this.roundToScore].flight_type_code )
   },
   methods: {
     checkDouble(event) {
@@ -164,6 +167,10 @@ export default {
     validateValue(event, minuteLimit) {
       const decimals = 1;
       const numberInput = parseInt(event.target.rawInput);
+
+      const processedTimesIndex = parseInt(event.target.id)
+
+
       // Catch the case where nothing was input
       this.reFormat(event.target);
 
